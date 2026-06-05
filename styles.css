@@ -52,8 +52,9 @@ body {
 }
 
 .logo {
-    height: 40px;
+    height: 60px;
     width: auto;
+    max-width: 180px;
 }
 
 .nav-menu {
@@ -133,8 +134,8 @@ body {
 }
 
 .logo-large {
-    width: 200px;
-    height: 200px;
+    width: 280px;
+    height: 280px;
     margin: 0 auto 20px;
 }
 
@@ -547,5 +548,479 @@ body {
     .logo-large {
         width: 150px;
         height: 150px;
+    }
+}
+
+
+/* About Section */
+.about-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-subtitle {
+    font-size: 18px;
+    color: var(--primary-orange);
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+}
+
+.about-text h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-teal);
+    margin-bottom: 15px;
+}
+
+.about-text p {
+    font-size: 16px;
+    color: var(--text-dark);
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.values-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.value-item {
+    display: flex;
+    gap: 15px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.value-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.value-icon {
+    font-size: 32px;
+    min-width: 40px;
+}
+
+.value-item h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary-teal);
+    margin-bottom: 5px;
+}
+
+.value-item p {
+    font-size: 14px;
+    color: var(--text-light);
+    margin: 0;
+}
+
+/* Ride Section */
+.ride-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.step-card {
+    padding: 30px;
+    background: var(--light-gray);
+    border-radius: 10px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.step-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-orange);
+    color: white;
+    border-radius: 50%;
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.step-card h3,
+.step-card h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary-teal);
+    margin-bottom: 10px;
+}
+
+.step-card p {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.ride-features {
+    background: var(--light-gray);
+    padding: 40px;
+    border-radius: 10px;
+    margin-top: 40px;
+}
+
+.ride-features h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--primary-teal);
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.features-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    color: var(--text-dark);
+}
+
+.feature-item .feature-icon {
+    color: var(--primary-orange);
+    font-size: 20px;
+    font-weight: 700;
+    min-width: 20px;
+}
+
+/* Drive Section */
+.drive-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+}
+
+.requirements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.requirement-card {
+    padding: 35px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.requirement-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.requirement-card h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary-teal);
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--primary-orange);
+}
+
+.requirement-card ul {
+    list-style: none;
+}
+
+.requirement-card li {
+    font-size: 15px;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+.driver-steps {
+    margin-top: 40px;
+}
+
+.driver-steps h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--primary-teal);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Safety Section */
+.safety-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.safety-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.safety-card {
+    padding: 30px;
+    background: var(--light-gray);
+    border-radius: 10px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--primary-orange);
+}
+
+.safety-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.safety-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.safety-card h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary-teal);
+    margin-bottom: 10px;
+}
+
+.safety-card p {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.safety-tips {
+    background: var(--light-gray);
+    padding: 40px;
+    border-radius: 10px;
+    margin-top: 40px;
+}
+
+.safety-tips h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--primary-teal);
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.tips-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.tip-item {
+    display: flex;
+    gap: 15px;
+    font-size: 15px;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.tip-number {
+    color: var(--primary-orange);
+    font-weight: 700;
+    font-size: 20px;
+    min-width: 20px;
+}
+
+/* Help Section */
+.help-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto 50px;
+}
+
+.faq-item {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+    background: var(--light-gray);
+    transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+    background: #efefef;
+}
+
+.faq-question h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primary-teal);
+    margin: 0;
+}
+
+.faq-toggle {
+    font-size: 24px;
+    color: var(--primary-orange);
+    font-weight: 700;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-toggle {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    padding: 20px;
+    background: white;
+    border-top: 1px solid #e0e0e0;
+}
+
+.faq-answer p {
+    font-size: 15px;
+    color: var(--text-dark);
+    line-height: 1.7;
+    margin: 0;
+}
+
+.help-contact {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+}
+
+.help-contact h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--primary-teal);
+    margin-bottom: 10px;
+}
+
+.help-contact > p {
+    font-size: 16px;
+    color: var(--text-light);
+    margin-bottom: 25px;
+}
+
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-link {
+    display: inline-block;
+    padding: 12px 20px;
+    background: var(--primary-orange);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+    background: #e55a24;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 28px;
+    }
+
+    .steps-grid,
+    .requirements-grid,
+    .safety-features,
+    .values-list {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .hero-text h2 {
+        font-size: 28px;
+    }
+
+    .nav-menu {
+        display: none;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+    }
+
+    .about-text h3 {
+        font-size: 20px;
+    }
+
+    .ride-features,
+    .safety-tips,
+    .help-contact {
+        padding: 25px;
     }
 }

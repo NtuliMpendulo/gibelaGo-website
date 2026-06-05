@@ -79,4 +79,28 @@ if (hamburger) {
     });
 }
 
+// FAQ Toggle functionality
+document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', function() {
+        const faqItem = this.parentElement;
+        const answer = faqItem.querySelector('.faq-answer');
+        
+        // Close other open FAQs
+        document.querySelectorAll('.faq-item').forEach(item => {
+            if (item !== faqItem && item.classList.contains('active')) {
+                item.classList.remove('active');
+                item.querySelector('.faq-answer').style.display = 'none';
+            }
+        });
+        
+        // Toggle current FAQ
+        faqItem.classList.toggle('active');
+        if (faqItem.classList.contains('active')) {
+            answer.style.display = 'block';
+        } else {
+            answer.style.display = 'none';
+        }
+    });
+});
+
 console.log('GibelaGo website loaded successfully!');
