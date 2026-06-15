@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Platform Take-Rate Splits Comparison
             const gibelagoCommission = weeklyGrossFares * 0.10; // Disruptive 10%
-            const competitorCommission = weeklyGrossFares * 0.25; // Standard 25% Uber/Bolt take
+            const competitorCommission = weeklyGrossFares * 0.25; // Standard 25% typical market take-rate
             
             const gibelagoNetPayout = weeklyGrossFares - gibelagoCommission;
             const competitorNetPayout = weeklyGrossFares - competitorCommission;
@@ -158,8 +158,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (gibelagoCommissionDisplay) gibelagoCommissionDisplay.textContent = `-R${gibelagoCommission.toFixed(2)}`;
             if (driverNetDisplay) driverNetDisplay.textContent = `R${gibelagoNetPayout.toFixed(2)}`;
             
+            // LEGALLY PROTECTED ANONYMIZED COMPARISON STRING UPDATE
             if (competitorLossDisplay) {
-                competitorLossDisplay.textContent = `They take R${competitorCommission.toFixed(2)} instead of our R${gibelagoCommission.toFixed(2)}!`;
+                competitorLossDisplay.textContent = `Other platforms take R${competitorCommission.toFixed(2)} instead of our R${gibelagoCommission.toFixed(2)}!`;
             }
 
             if (driverResult) driverResult.classList.remove('hidden');
