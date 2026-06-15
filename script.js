@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- 3. Uber-Patterned Upfront Distance Fare Matrix Estimator Engine ---
+    // --- 3. Market-Beating Distance Fare Matrix Estimator Engine ---
     const pickupSelect = document.getElementById('pickup');
     const distanceInput = document.getElementById('distance');
     const tierBtns = document.querySelectorAll('.tier-btn');
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const distanceRateDisplay = document.getElementById('distanceRateDisplay');
     const calculatedPrice = document.getElementById('calculatedPrice');
 
-    let selectedTier = 'go'; // Fallback default tier match
+    let selectedTier = 'go'; // Default tier fallback tracking
 
     // Handle tier-button selector toggle updates
     tierBtns.forEach(btn => {
@@ -86,38 +86,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (calcFareBtn) {
         calcFareBtn.addEventListener('click', () => {
-            const zone = pickupSelect.value;
-            const distance = parseFloat(distanceInput.value);
+            const zone = pickupSelect ? pickupSelect.value : '';
+            const distanceValue = distanceInput ? distanceInput.value.trim() : '';
+            const distance = parseFloat(distanceValue);
 
             if (!zone) {
                 alert('Please select an Operational Area zone first.');
                 return;
             }
-            if (!distance || distance <= 0) {
+            if (isNaN(distance) || distance <= 0) {
                 alert('Please enter a valid trip distance greater than 0 km.');
                 return;
             }
 
             /**
-             * Uber-style pricing architecture scaled back for local affordability:
-             * Formula: Total Fare = [Base Flag-Drop Rate] + ([Distance Multiplier] * Distance)
+             * MARKET-BEATING DISRUPTOR METRICS vs UBER & BOLT
+             * Cuts base rates by roughly 30%, slashes per-km rates, 
+             * and completely eliminates traffic time fees and surges.
              */
-            const zoneBaseRates = { jhb: 22.00, pta: 20.00, cpt: 25.00, dbn: 18.00 };
-            const tierDistanceRatesPerKm = { go: 7.50, xl: 11.00, exec: 16.50 };
+            const marketBeatingBaseRates = { jhb: 18.00, pta: 18.00, cpt: 20.00, dbn: 16.00 };
+            const competitiveRatesPerKm = { 
+                go: 6.50,    // Budget Commuter (Undercuts Bolt Go)
+                xl: 9.00,    // Group/Family Tier
+                exec: 14.00  // Premium Tier 
+            };
 
-            // Calculations
-            const baseFlagDrop = zoneBaseRates[zone];
-            const ratePerKm = tierDistanceRatesPerKm[selectedTier];
+            // Calculate Rider Upfront Costs
+            const baseFlagDrop = marketBeatingBaseRates[zone] || 18.00;
+            const ratePerKm = competitiveRatesPerKm[selectedTier] || 6.50;
             const cumulativeDistanceCost = ratePerKm * distance;
             const totalAggregatedFare = baseFlagDrop + cumulativeDistanceCost;
 
-            // Output values safely inside interface display components
-            baseRateDisplay.textContent = `R${baseFlagDrop.toFixed(2)}`;
-            distanceRateDisplay.textContent = `R${cumulativeDistanceCost.toFixed(2)} (${distance}km @ R${ratePerKm.toFixed(2)}/km)`;
-            calculatedPrice.textContent = `R${totalAggregatedFare.toFixed(2)}`;
+            // Render Values to User Interface
+            if (baseRateDisplay) {
+                baseRateDisplay.textContent = `R${baseFlagDrop.toFixed(2)}`;
+            }
+            if (distanceRateDisplay) {
+                distanceRateDisplay.textContent = `R${cumulativeDistanceCost.toFixed(2)} (${distance}km @ R${ratePerKm.toFixed(2)}/km)`;
+            }
+            if (calculatedPrice) {
+                calculatedPrice.textContent = `R${totalAggregatedFare.toFixed(2)}`;
+            }
             
-            // Reveal calculations component block overlay wrapper
-            fareResult.classList.remove('hidden');
+            if (fareResult) {
+                fareResult.classList.remove('hidden');
+            }
         });
     }
 
@@ -141,7 +154,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 parentItem.classList.add('open');
                 const body = parentItem.querySelector('.faq-body');
                 if (body) {
-                    // Set maxHeight directly to content scrollHeight for CSS transit parameters
                     body.style.maxHeight = body.scrollHeight + "px";
                 }
             }
@@ -156,14 +168,13 @@ document.addEventListener('DOMContentLoaded', () => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('fade-in-visible');
-                    entryObserver.unobserve(entry.target); // Kill tracking once visual render fires
+                    entryObserver.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.15 });
 
         animatedElements.forEach(element => entryObserver.observe(element));
     } else {
-        // Fallback for older browsers directly bypassing intercept checks
         animatedElements.forEach(el => el.classList.add('fade-in-visible'));
     }
 
@@ -173,14 +184,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileLinks = document.querySelectorAll('.mobile-link');
 
     if (mobileToggle && mobileDrawer) {
-        // Toggle slide position and hamburger open states on click
         mobileToggle.addEventListener('click', (e) => {
             e.stopPropagation();
             mobileToggle.classList.toggle('open');
             mobileDrawer.classList.toggle('open');
         });
 
-        // Close the drawer overlay if a click is registered outside its container
         document.addEventListener('click', (e) => {
             if (!mobileDrawer.contains(e.target) && !mobileToggle.contains(e.target)) {
                 mobileToggle.classList.remove('open');
@@ -188,7 +197,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Close the drawer safely when clicking a landing anchor link
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileToggle.classList.remove('open');
