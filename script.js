@@ -64,17 +64,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     portalTabs.forEach(tab => {
         tab.addEventListener("click", () => {
+            // Remove active status from all operational buttons
             portalTabs.forEach(t => t.classList.remove("active"));
+            
+            // Hide all layout content panels uniformly
             portalContents.forEach(c => {
                 c.classList.add("hidden");
                 c.classList.remove("active");
             });
 
+            // Activate chosen structural tab element
             tab.classList.add("active");
             const targetId = tab.getAttribute("data-portal");
             const activeContent = document.getElementById(targetId);
-            activeContent.classList.remove("hidden");
-            activeContent.classList.add("active");
+            
+            if (activeContent) {
+                activeContent.classList.remove("hidden");
+                activeContent.classList.add("active");
+            }
         });
     });
 
@@ -83,12 +90,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
             
             const target = document.querySelector(targetId);
             if (target) {
+                e.preventDefault();
                 const navbarHeight = document.querySelector('.navbar').offsetHeight || 80;
                 const targetPosition = target.offsetTop - navbarHeight;
 
@@ -101,13 +108,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // ==========================================
-    // 5. Active Link Scroll Spy (Fixed pageYOffset)
+    // 5. Active Link Scroll Spy (Dynamic Highlight)
     // ==========================================
     window.addEventListener('scroll', () => {
         let current = '';
-        const sections = document.querySelectorAll('section, header');
+        const sections = document.querySelectorAll('header, section[id]');
         const navbarHeight = document.querySelector('.navbar').offsetHeight || 80;
-        const scrollPosition = window.scrollY + navbarHeight + 20;
+        const scrollPosition = window.scrollY + navbarHeight + 100;
 
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
@@ -120,26 +127,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.querySelectorAll('.nav-link').forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href').slice(1) === current) {
-                link.classList.add('active');
+            const hrefValue = link.getAttribute('href');
+            if (hrefValue && hrefValue.startsWith('#')) {
+                const cleanId = hrefValue.slice(1);
+                if (cleanId === current || (current === '' && cleanId === '#')) {
+                    link.classList.add('active');
+                }
             }
         });
     });
 
     // ==========================================
-    // 6. Premium Redirection Hub (Targeted App Links)
+    // 6. Refined App Store Redirection Engine
     // ==========================================
-    document.querySelectorAll('.cta-buttons .btn, .app-link').forEach(button => {
+    // Fixed query selector logic target parameters specifically for application links
+    document.querySelectorAll('.app-link, .portal-content .btn').forEach(button => {
         button.addEventListener('click', function(e) {
             const text = this.textContent.trim();
             
-            if (text.includes('Rider') || text.includes('Google Play') || text.includes('App Store')) {
+            if (text.includes('Google Play') || text.includes('App Store') || text.includes('Rider App')) {
                 e.preventDefault();
-                alert('Redirecting to Google Play / App Store for Rider App download...');
+                alert('Redirecting to App Stores for Rider App download confirmation...');
                 // window.location.href = 'https://play.google.com/store/apps/details?id=com.gibelago';
             } else if (text.includes('Driver')) {
                 e.preventDefault();
-                alert('Redirecting to South African Driver Registration Portal...');
+                alert('Redirecting to the verified South African Driver Registration Hub...');
                 // window.location.href = 'https://driver.gibelago.co.za';
             }
         });
@@ -150,19 +162,21 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================
     const observerOptions = {
         threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        rootMargin: '0px 0px -40px 0px'
     };
 
     const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('fade-in-visible');
+                // Unobserve structural layer once animation fires cleanly
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    // Targets our actual elements (feature-card, value-card, step-card)
-    document.querySelectorAll('.feature-card, .value-card, .step-card, .safety-card').forEach(el => {
+    // Matches with updated markup layer configurations cleanly
+    document.querySelectorAll('.feature-card, .value-item, .step-card, .safety-card, .requirement-box').forEach(el => {
         el.classList.add('fade-in-ready');
         observer.observe(el);
     });
@@ -177,7 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const currentItem = this.parentElement;
             const isOpen = currentItem.classList.contains("open");
             
-            // Auto-collapse alternative panels for clean UX
+            // Auto-collapse alternative panels for clean UX execution
             document.querySelectorAll(".faq-item").forEach(item => {
                 item.classList.remove("open");
             });
@@ -188,5 +202,5 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    console.log('GibelaGo platform engine loaded successfully!');
+    console.log('GibelaGo production platform framework initialized cleanly.');
 });
