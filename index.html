@@ -90,17 +90,16 @@
                         <h3>Know Before You Go</h3>
                         <p style="color:var(--text-light); font-size:13px; margin-bottom:15px;">Calculate your upfront estimated ride cost across our South African zones using our transparent low-cost commuter matrix.</p>
                         
-                        <div class="input-group">
-                            <label for="pickup">Select Operational Area Base</label>
-                            <select id="pickup">
-                                <option value="" disabled selected>Choose your zone...</option>
-                                <option value="jhb">Johannesburg (JHB)</option>
-                                <option value="pta">Pretoria (PTA)</option>
-                                <option value="cpt">Cape Town (CPT)</option>
-                                <option value="dbn">Durban (DBN)</option>
-                            </select>
-                        </div>
-
+                       <div class="input-group">
+    <label for="pickup">Select Operational Area Base</label>
+    <select id="pickup">
+        <option value="" disabled>Choose your zone...</option>
+        <option value="jhb" selected>Johannesburg (JHB)</option>
+        <option value="pta" disabled>Pretoria (PTA) — Coming Soon</option>
+        <option value="cpt" disabled>Cape Town (CPT) — Coming Soon</option>
+        <option value="dbn" disabled>Durban (DBN) — Coming Soon</option>
+    </select>
+</div>
                         <div class="input-group">
                             <label for="distance">Estimated Trip Distance (km)</label>
                             <input type="number" id="distance" placeholder="Enter distance, e.g. 12" min="1">
