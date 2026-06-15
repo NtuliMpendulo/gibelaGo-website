@@ -62,11 +62,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- 3. Upfront Base Fare Matrix Estimator Engine ---
+    // --- 3. Uber-Patterned Upfront Distance Fare Matrix Estimator Engine ---
     const pickupSelect = document.getElementById('pickup');
+    const distanceInput = document.getElementById('distance');
     const tierBtns = document.querySelectorAll('.tier-btn');
     const calcFareBtn = document.getElementById('calcFareBtn');
     const fareResult = document.getElementById('fareResult');
+    
+    const baseRateDisplay = document.getElementById('baseRateDisplay');
+    const distanceRateDisplay = document.getElementById('distanceRateDisplay');
     const calculatedPrice = document.getElementById('calculatedPrice');
 
     let selectedTier = 'go'; // Fallback default tier match
@@ -83,23 +87,36 @@ document.addEventListener('DOMContentLoaded', () => {
     if (calcFareBtn) {
         calcFareBtn.addEventListener('click', () => {
             const zone = pickupSelect.value;
+            const distance = parseFloat(distanceInput.value);
 
             if (!zone) {
                 alert('Please select an Operational Area zone first.');
                 return;
             }
+            if (!distance || distance <= 0) {
+                alert('Please enter a valid trip distance greater than 0 km.');
+                return;
+            }
 
-            // High-fidelity pricing matrices baseline mappings (ZAR - R)
-            const zoneRates = { jhb: 45, pta: 40, cpt: 50, dbn: 35 };
-            const tierMultipliers = { go: 1.0, xl: 1.4, exec: 2.1 };
+            /**
+             * Uber-style pricing architecture scaled back for local affordability:
+             * Formula: Total Fare = [Base Flag-Drop Rate] + ([Distance Multiplier] * Distance)
+             */
+            const zoneBaseRates = { jhb: 22.00, pta: 20.00, cpt: 25.00, dbn: 18.00 };
+            const tierDistanceRatesPerKm = { go: 7.50, xl: 11.00, exec: 16.50 };
 
-            // Math execution
-            const baseCost = zoneRates[zone];
-            const multiplier = tierMultipliers[selectedTier];
-            const structuredFinalFare = (baseCost * multiplier).toFixed(2);
+            // Calculations
+            const baseFlagDrop = zoneBaseRates[zone];
+            const ratePerKm = tierDistanceRatesPerKm[selectedTier];
+            const cumulativeDistanceCost = ratePerKm * distance;
+            const totalAggregatedFare = baseFlagDrop + cumulativeDistanceCost;
 
-            // Inject the result strings and smoothly transition layout display via token
-            calculatedPrice.textContent = `R${structuredFinalFare}`;
+            // Output values safely inside interface display components
+            baseRateDisplay.textContent = `R${baseFlagDrop.toFixed(2)}`;
+            distanceRateDisplay.textContent = `R${cumulativeDistanceCost.toFixed(2)} (${distance}km @ R${ratePerKm.toFixed(2)}/km)`;
+            calculatedPrice.textContent = `R${totalAggregatedFare.toFixed(2)}`;
+            
+            // Reveal calculations component block overlay wrapper
             fareResult.classList.remove('hidden');
         });
     }
