@@ -3,335 +3,366 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GibelaGo - Your Ride. Your Way. Rainbow Nation.</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>GibelaGo | Smart Local Rides & Logistics</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navigation -->
+
     <nav class="navbar">
-        <div class="container nav-container">
-            <div class="nav-brand">
-                <img src="gibelaGo_logo_white.png" alt="GibelaGo" class="logo">
-            </div>
+        <div class="container">
+            <a href="#" class="nav-brand">
+                <img src="assets/logo.png" alt="GibelaGo Logo" class="logo" onerror="this.src='https://via.placeholder.com/160x50?text=GibelaGo'">
+            </a>
+            
             <ul class="nav-menu">
-                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#" class="nav-link active">Home</a></li>
+                <li><a href="#features" class="nav-link">Features</a></li>
                 <li><a href="#about" class="nav-link">About Us</a></li>
-                <li><a href="#ride" class="nav-link">Ride</a></li>
-                <li><a href="#drive" class="nav-link">Drive</a></li>
+                <li><a href="#portal" class="nav-link">Portals</a></li>
                 <li><a href="#safety" class="nav-link">Safety</a></li>
                 <li><a href="#help" class="nav-link">Help</a></li>
             </ul>
+
             <div class="language-dropdown">
-                <button class="language-selector" id="langBtn" aria-haspopup="true">
-                    <span>EN</span>
-                    <svg width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true">
-                        <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
+                <button class="language-selector" id="langBtn">
+                    🌐 English
                 </button>
                 <div class="dropdown-menu" id="langMenu">
-                    <a href="#" class="dropdown-item active">English (EN)</a>
-                    <a href="#" class="dropdown-item">isiZulu (ZU)</a>
-                    <a href="#" class="dropdown-item">isiXhosa (XH)</a>
-                    <a href="#" class="dropdown-item">Afrikaans (AF)</a>
+                    <a href="#" class="dropdown-item active">English</a>
+                    <a href="#" class="dropdown-item">isiZulu</a>
+                    <a href="#" class="dropdown-item">Afrikaans</a>
+                    <a href="#" class="dropdown-item">Sesotho</a>
                 </div>
             </div>
         </div>
-    </nav>
+    </</nav>
 
-    <!-- Hero Section with Fare Estimator Matrix -->
-    <section class="hero" id="home">
+    <header class="hero" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1400&q=80');">
         <div class="hero-overlay"></div>
-        <div class="container hero-container">
-            <div class="hero-text-side">
-                <h2>Your Ride. Your Way.<br>Rainbow Nation.<br><span class="highlight">One Journey. Together.</span></h2>
-                <p class="hero-lead">Safe, affordable, and reliable rides built by South Africans, for South Africans. Rooted deeply in the spirit of Ubuntu.</p>
-                
-                <div class="cta-buttons">
-                    <a href="#ride" class="btn btn-primary">📥 Download Rider App</a>
-                    <a href="#drive" class="btn btn-secondary">👤 Become a Driver</a>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>Your City. Your Move. <span class="highlight">GibelaGo.</span></h2>
+                    <p>Experience reliable, localized ride-hailing and smart logistics built specifically for South African communities. Affordable upfront pricing, vetted drivers, and dependable service at your fingertips.</p>
+                    
+                    <div class="cta-buttons">
+                        <a href="#portal" class="btn btn-primary">Get Moving</a>
+                        <a href="#portal" class="btn btn-secondary">Drive With Us</a>
+                    </div>
+
+                    <div class="app-links">
+                        <a href="#" class="app-link">
+                            <span class="store-icon">🤖</span> Google Play
+                        </a>
+                        <a href="#" class="app-link">
+                            <span class="store-icon">🍏</span> App Store
+                        </a>
+                    </div>
                 </div>
 
-                <div class="app-links">
-                    <a href="#" class="app-link">
-                        <span class="store-icon">▶</span>
-                        <div><small>GET IT ON</small><br><strong>Google Play</strong></div>
-                    </a>
-                    <a href="#" class="app-link">
-                        <span class="store-icon">🍎</span>
-                        <div><small>Download on the</small><br><strong>App Store</strong></div>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Amazing Interactive Fare Estimator Card -->
-            <div class="hero-widget-side">
-                <div class="estimator-card">
-                    <h3>Where are you heading?</h3>
-                    <p>Check your transparent upfront fare estimation instantenously.</p>
-                    <div class="estimator-form">
+                <div class="hero-widget-side">
+                    <div class="estimator-card">
+                        <h3>Know Before You Go</h3>
+                        <p>Calculate your upfront estimated fare across our primary South African operational zones.</p>
+                        
                         <div class="input-group">
-                            <label for="pickup">Pickup City / Area</label>
+                            <label for="pickup">Select Operational Area</label>
                             <select id="pickup">
-                                <option value="" disabled selected>Select location...</option>
-                                <option value="jhb">Johannesburg / Sandton</option>
-                                <option value="pta">Pretoria / Tshwane</option>
-                                <option value="cpt">Cape Town / CBD</option>
-                                <option value="dbn">Durban / Umhlanga</option>
+                                <option value="" disabled selected>Choose your zone...</option>
+                                <option value="jhb">Johannesburg (JHB)</option>
+                                <option value="pta">Pretoria (PTA)</option>
+                                <option value="cpt">Cape Town (CPT)</option>
+                                <option value="dbn">Durban (DBN)</option>
                             </select>
                         </div>
+
                         <div class="input-group">
-                            <label for="tier">Service Class</label>
+                            <label>Choose Ride Tier</label>
                             <div class="tier-selector">
-                                <button class="tier-btn active" data-tier="go">GibelaGo</button>
-                                <button class="tier-btn" data-tier="xl">GibelaXL</button>
-                                <button class="tier-btn" data-tier="exec">GibelaExec</button>
+                                <button type="button" class="tier-btn active" data-tier="go">GibelaGo</button>
+                                <button type="button" class="tier-btn" data-tier="xl">GibelaXL</button>
+                                <button type="button" class="tier-btn" data-tier="exec">Executive</button>
                             </div>
                         </div>
+
                         <button type="button" class="btn btn-estimate" id="calcFareBtn">Calculate Upfront Fare</button>
-                    </div>
-                    <div class="estimator-result hidden" id="fareResult">
-                        <div class="fare-divider"></div>
-                        <div class="result-row">
-                            <span>Estimated Fare:</span>
-                            <span class="price-tag" id="calculatedPrice">R0.00</span>
+
+                        <div id="fareResult" class="hidden">
+                            <div class="fare-divider"></div>
+                            <div class="result-row">
+                                <span>Estimated Base Fare:</span>
+                                <span class="price-tag" id="calculatedPrice">R0.00</span>
+                            </div>
+                            <small class="fare-disclaimer">*Actual fares may vary depending on real-time traffic variations, routing shifts, and localized demand metrics.</small>
                         </div>
-                        <small class="fare-disclaimer">Fares are calculated honestly based on local market distances without surge traps.</small>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </header>
 
-    <!-- About Us Section -->
-    <section class="about-section" id="about">
+    <section id="features" class="features">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">About GibelaGo</h2>
-                <p class="section-subtitle">Proudly South African. Rooted in Ubuntu Values.</p>
+                <h2 class="section-title">Why Communities Choose Us</h2>
+                <p class="section-subtitle">The GibelaGo Advantage</p>
             </div>
-            <div class="about-content">
-                <div class="about-text-wrapper">
-                    <h3>Our Mission</h3>
-                    <p>GibelaGo is a proudly homegrown digital ride-hailing platform reimagining mobility across our beautiful nation. We believe explicitly in the deep-seated philosophy of **Ubuntu**—*"I am because we are"*—creating an ecosystem where everyday commuters and local drivers seamlessly empower one another via fair commercial standards.</p>
-                </div>
-                <div class="values-grid">
-                    <div class="value-card">
-                        <div class="value-icon-box">🤝</div>
-                        <h4>Ubuntu</h4>
-                        <p>Community first approach. We look after our people on every route.</p>
-                    </div>
-                    <div class="value-card">
-                        <div class="value-icon-box">🛡️</div>
-                        <h4>Safety</h4>
-                        <p>Zero compromises. Stringent verification processes for absolute security.</p>
-                    </div>
-                    <div class="value-card">
-                        <div class="value-icon-box">💰</div>
-                        <h4>Fairness</h4>
-                        <p>Transparent pricing metrics ensuring drivers retain the rewards of their labor.</p>
-                    </div>
-                    <div class="value-card">
-                        <div class="value-icon-box">⚡</div>
-                        <h4>Innovation</h4>
-                        <p>State-of-the-art native real-time mapping built for local infrastructure.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Why Choose Section -->
-    <section class="features">
-        <div class="container">
-            <h2 class="section-title text-center">Why Choose GibelaGo?</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🛡️</div>
-                    <h3>Safe Rides</h3>
-                    <p>Your safety is our ongoing vow. Fully vetted operators, background tracking, and live telemetry maps.</p>
+                    <span class="feature-icon">💰</span>
+                    <h3>No Hidden Surges</h3>
+                    <p>What you see is what you pay. Transparent baseline structures protect your wallet from volatile fluctuations.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">💰</div>
-                    <h3>Affordable Fares</h3>
-                    <p>Guaranteed clear pricing equations without unexpected micro-fees at destination arrival.</p>
+                    <span class="feature-icon">🛡️</span>
+                    <h3>Safety Standardized</h3>
+                    <p>Tracked trips, biometric driver verification, and localized emergency responses keep you secure on every road.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">👥</div>
-                    <h3>Friendly Drivers</h3>
-                    <p>Courteous, highly certified professionals treats commuters with local warmth and pride.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Fast Service</h3>
-                    <p>High-density matching algorithms routing nearest available safe cars within moments.</p>
+                    <span class="feature-icon">⚡</span>
+                    <h3>Hyper-Local Routing</h3>
+                    <p>Our mapping framework optimizes neighborhood pathways, bypassing traditional structural traffic bottlenecks efficiently.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Functional Toggle Interactive Ride/Drive Section -->
-    <section class="portal-section" id="ride">
+    <section id="about" class="about-section">
         <div class="container">
-            <div class="portal-tabs">
-                <button class="portal-tab-btn active" data-portal="rider-portal">How to Ride</button>
-                <button class="portal-tab-btn" data-portal="driver-portal">Become a Driver</button>
+            <div class="section-header">
+                <h2 class="section-title">Driven by Local Purpose</h2>
+                <p class="section-subtitle">Our Mission</p>
             </div>
 
-            <!-- Rider Portal Content -->
-            <div class="portal-content active" id="rider-portal">
-                <div class="section-header">
-                    <h2 class="section-title">Get Moving In 4 Simple Steps</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Empowering Commuters & Drivers Alike</h3>
+                    <p>GibelaGo is more than a digital connection system—it is a platform built specifically to support local micro-economies. By matching reliable local mobility with fair, sustainable earning metrics for drivers, we bridge infrastructural transport gaps while driving communities forward.</p>
                 </div>
+
+                <div class="values-list">
+                    <div class="value-item">
+                        <span class="value-icon">🤝</span>
+                        <div>
+                            <h4>Absolute Integrity</h4>
+                            <p>Transparent fee splits that prioritize sustainable livelihoods for our driver network partners.</p>
+                        </div>
+                    </div>
+                    <div class="value-item">
+                        <span class="value-icon">📍</span>
+                        <div>
+                            <h4>Community Centric</h4>
+                            <p>Optimized specifically to navigate urban neighborhoods and key transport hubs safely.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portal" class="portal-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Choose Your Portal</h2>
+                <p class="section-subtitle">Get Started Today</p>
+            </div>
+
+            <div class="portal-tabs">
+                <button class="portal-tab-btn active" data-portal="riderPortal">Rider Portal</button>
+                <button class="portal-tab-btn" data-portal="driverPortal">Driver Hub</button>
+            </div>
+
+            <div id="riderPortal" class="portal-content active">
                 <div class="steps-grid">
                     <div class="step-card">
                         <div class="step-number">1</div>
-                        <h3>Download the App</h3>
-                        <p>Secure the app on Google Play or iOS App Store instantly using basic details.</p>
+                        <h3>Set Destination</h3>
+                        <p>Open the app, select your zone, and enter your target drop-off point.</p>
                     </div>
                     <div class="step-card">
                         <div class="step-number">2</div>
-                        <h3>Enter Destination</h3>
-                        <p>Input where you are headed. Pinpoint exactly where you want to be dropped off.</p>
+                        <h3>Confirm Tier</h3>
+                        <p>View upfront cost matrices transparently and match with a nearby local driver.</p>
                     </div>
                     <div class="step-card">
                         <div class="step-number">3</div>
-                        <h3>Request a Car</h3>
-                        <p>Match with an executive driver ready to receive you securely inside minutes.</p>
+                        <h3>Ride Comfortably</h3>
+                        <p>Track your arrival in real-time and share details seamlessly with family.</p>
                     </div>
-                    <div class="step-card">
-                        <div class="step-number">4</div>
-                        <h3>Enjoy Your Journey</h3>
-                        <p>Sit back and relax. Enjoy comfortable trips monitored continuously by control dispatch teams.</p>
-                    </div>
+                </div>
+                <div class="text-center" style="margin-top: 40px;">
+                    <a href="#" class="btn btn-primary cta-buttons"><span class="btn">Download Rider App</span></a>
                 </div>
             </div>
 
-            <!-- Driver Portal Content -->
-            <div class="portal-content hidden" id="driver-portal">
-                <div class="section-header">
-                    <h2 class="section-title">Drive and Earn With Complete Control</h2>
-                </div>
+            <div id="driverPortal" class="portal-content hidden">
                 <div class="driver-split-view">
                     <div class="requirement-box">
-                        <h3>Minimum Requirements</h3>
+                        <h3>Driver Prerequisites</h3>
                         <ul class="clean-list">
-                            <li><span class="check-mark">✓</span> Age limit structural baseline: 21 years or older</li>
-                            <li><span class="check-mark">✓</span> Valid South African Professional Driving Permit (PrDP)</li>
-                            <li><span class="check-mark">✓</span> Fully registered, pristine running operational vehicle</li>
-                            <li><span class="check-mark">✓</span> Comprehensive commercial passenger liability insurance</li>
+                            <li><span class="check-mark">✓</span> Valid South African Professional Driving Permit (PrDP).</li>
+                            <li><span class="check-mark">✓</span> Comprehensive criminal background screening clearing.</li>
+                            <li><span class="check-mark">✓</span> Up-to-date identification and residential validation proofs.</li>
                         </ul>
                     </div>
                     <div class="requirement-box">
-                        <h3>Why Partner With Us?</h3>
+                        <h3>Vehicle Standards</h3>
                         <ul class="clean-list">
-                            <li><span class="check-mark">✓</span> Industry leading competitive platform percentage splits</li>
-                            <li><span class="check-mark">✓</span> Absolute operational freedom over selected working hours</li>
-                            <li><span class="check-mark">✓</span> Direct emergency roadside assistance dispatch features</li>
-                            <li><span class="check-mark">✓</span> Consistent, predictable weekly payouts straight into your account</li>
+                            <li><span class="check-mark">✓</span> 4-door models in immaculate operational condition.</li>
+                            <li><span class="check-mark">✓</span> Valid vehicle registration certificate and annual licensing disk.</li>
+                            <li><span class="check-mark">✓</span> Full double-check roadworthy certification clearance.</li>
                         </ul>
                     </div>
                 </div>
+                <div class="text-center" style="margin-top: 40px;">
+                    <a href="#" class="btn btn-secondary cta-buttons"><span class="btn">Register as a Driver</span></a>
+                </div>
             </div>
+
         </div>
     </section>
 
-    <!-- Safety Center -->
-    <section class="safety-section" id="safety">
+    <section id="safety" class="safety-section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">A Security Fortress Around Every Ride</h2>
-                <p class="section-subtitle">We protect your physical and digital peace of mind at every turn.</p>
+                <h2 class="section-title">Your Protection is Our Priority</h2>
+                <p class="section-subtitle">Safety Standards</p>
             </div>
+
             <div class="safety-grid">
                 <div class="safety-card">
-                    <div class="safety-icon">🔐</div>
-                    <h3>Thorough Vetting</h3>
-                    <p>Rigorous identity validation frameworks checking criminal background and technical fitness metrics.</p>
+                    <span class="safety-icon">📸</span>
+                    <h3>Biometric Matching</h3>
+                    <p>Continuous validation check-ins ensure that the driver behind the wheel matches their verified profile precisely.</p>
                 </div>
                 <div class="safety-card">
-                    <div class="safety-icon">📍</div>
-                    <h3>Live Journey Tracking</h3>
-                    <p>Share live encrypted route feeds instantly with friends and family from within the application interface.</p>
+                    <span class="safety-icon">🛰️</span>
+                    <h3>Real-Time Tracking</h3>
+                    <p>Every single kilometer is logged and monitored dynamically via centralized GPS hubs.</p>
                 </div>
                 <div class="safety-card">
-                    <div class="safety-icon">🆘</div>
-                    <h3>24/7 In-App Panic Link</h3>
-                    <p>A direct SOS feature to immediately dispatch private armed response or roadside medical aid teams.</p>
+                    <span class="safety-icon">🚨</span>
+                    <h3>Emergency Assistance</h3>
+                    <p>Instant digital safety triggers route immediate ground support to your exact coordinates if an issue arises.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="help-section" id="help">
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Voices from the Community</h2>
+                <p class="section-subtitle">Testimonials</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">TN</div>
+                        <div>
+                            <h4>Thando Ndlovu</h4>
+                            <p class="testimonial-role">Daily Commuter (JHB)</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"The predictable pricing is exactly what I needed. No more morning surge surprises when trying to get to work on time."</p>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">SM</div>
+                        <div>
+                            <h4>Sipho Molefe</h4>
+                            <p class="testimonial-role">Driver Partner (PTA)</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"GibelaGo treats drivers with respect. The fee structure lets me bring home sustainable earnings for my family."</p>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="help" class="help-section">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Frequently Asked Questions</h2>
-                <p class="section-subtitle">Transparent answers regarding platform inner-workings</p>
+                <p class="section-subtitle">Support Hub</p>
             </div>
+
             <div class="faq-accordion-wrapper">
                 <div class="faq-item">
                     <button class="faq-trigger">
-                        <span>How do I securely book a ride?</span>
+                        <span>How is my upfront fare calculated?</span>
                         <span class="faq-icon-indicator">+</span>
                     </button>
                     <div class="faq-body">
-                        <p>Simply register inside the mobile interface using your cell number, verify with an OTP code, type in your precise visual pin destination, check the upfront quote match and tap request!</p>
+                        <p>Our fares are calculated clearly using baseline distance parameters relative to your chosen operational area zone, ensuring absolute price predictability before you confirm.</p>
                     </div>
                 </div>
+
                 <div class="faq-item">
                     <button class="faq-trigger">
-                        <span>What payment channels do you offer?</span>
+                        <span>Where exactly is GibelaGo available?</span>
                         <span class="faq-icon-indicator">+</span>
                     </button>
                     <div class="faq-body">
-                        <p>We handle seamless payments natively! Securely bind your South African debit/credit cards, pay via instant EFT configurations, or choose cash settlement options seamlessly prior to confirmation.</p>
+                        <p>We are currently operational within major transport corridors across Johannesburg, Pretoria, Cape Town, and Durban, with plans to expand further into surrounding communities.</p>
                     </div>
                 </div>
+
                 <div class="faq-item">
                     <button class="faq-trigger">
-                        <span>Are trips covered via insurance?</span>
+                        <span>How can I sign up as an fleet owner or driver?</span>
                         <span class="faq-icon-indicator">+</span>
                     </button>
                     <div class="faq-body">
-                        <p>Yes, absolutely. Every individual trip initiated inside our systems is protected fully by extensive third-party commercial passenger liability safeguards from start to stop.</p>
+                        <p>You can start your registration right here on our website through the Driver Hub tab, or visit our local support centers with your identification documents and vehicle permits.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid-top">
                 <div class="footer-brand-column">
-                    <img src="gibelaGo_logo_white.png" alt="GibelaGo Logo" class="footer-logo">
-                    <p>Proudly advancing local ecosystem transport across South Africa. Experience mobility through Ubuntu.</p>
+                    <h3 style="color:var(--white); margin-bottom:10px;">GibelaGo</h3>
+                    <p>Reliable mobility and logistical efficiency tailored for South African communities.</p>
                 </div>
+                
                 <div class="footer-links-column">
                     <h4>Company</h4>
                     <a href="#about">About Us</a>
-                    <a href="#">Careers</a>
-                    <a href="#">Press Kit</a>
+                    <a href="#features">Features</a>
+                    <a href="#safety">Safety Directives</a>
                 </div>
+
                 <div class="footer-links-column">
-                    <h4>Riders</h4>
-                    <a href="#ride">How It Works</a>
-                    <a href="#safety">Safety Matrix</a>
-                    <a href="#help">Help Hub</a>
+                    <h4>Legal</h4>
+                    <a href="#">Privacy Framework</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Driver Agreements</a>
                 </div>
+
                 <div class="footer-links-column">
                     <h4>Contact Support</h4>
-                    <a href="tel:+27661234567">📞 066 123 4567</a>
-                    <a href="mailto:support@gibelago.com">📧 support@gibelago.com</a>
-                    <span>📍 Johannesburg, ZA</span>
+                    <span>📞 +27 (0) 11 555 0123</span>
+                    <span>✉️ support@gibelago.co.za</span>
+                    <div class="social-links">
+                        <a href="#" class="social-icon">F</a>
+                        <a href="#" class="social-icon">X</a>
+                        <a href="#" class="social-icon">I</a>
+                    </div>
                 </div>
             </div>
+
             <div class="footer-bottom-bar">
-                <div>UBUNTU • RESPECT • TOGETHER WE GO FURTHER</div>
-                <div>© 2026 gibelago.com. Built with pride. All Rights Reserved.</div>
+                <div class="footer-tagline">Phambili Ngokuhamba Okuphephile!</div>
+                <div class="footer-copyright">&copy; 2026 GibelaGo (Pty) Ltd. All Rights Reserved.</div>
             </div>
         </div>
     </footer>
