@@ -17,19 +17,15 @@ document.addEventListener('DOMContentLoaded', () => {
             langMenu.classList.toggle('show');
         });
 
-        // Close dropdown when clicking anywhere else on the window
         window.addEventListener('click', () => {
             langMenu.classList.remove('show');
         });
 
-        // Language item switching logic
         langItems.forEach(item => {
             item.addEventListener('click', (e) => {
                 e.preventDefault();
                 langItems.forEach(i => i.classList.remove('active'));
                 item.classList.add('active');
-                
-                // Update the button string display natively
                 langBtn.innerHTML = `🌐 ${item.textContent.trim()}`;
                 langMenu.classList.remove('show');
             });
@@ -46,11 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetPortal = document.getElementById(targetPortalId);
 
             if (targetPortal) {
-                // Toggle active buttons states
                 tabBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
 
-                // Swap structural content visibility using tokens defined in your CSS
                 portalContents.forEach(content => {
                     content.classList.remove('active');
                     content.classList.add('hidden');
@@ -62,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- 3. Market-Beating Distance Fare Matrix Estimator Engine ---
+    // --- 3. Market-Beating Distance Fare Matrix Estimator Engine (Rider) ---
     const pickupSelect = document.getElementById('pickup');
     const distanceInput = document.getElementById('distance');
     const tierBtns = document.querySelectorAll('.tier-btn');
@@ -73,9 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const distanceRateDisplay = document.getElementById('distanceRateDisplay');
     const calculatedPrice = document.getElementById('calculatedPrice');
 
-    let selectedTier = 'go'; // Default tier fallback tracking
+    let selectedTier = 'go'; 
 
-    // Handle tier-button selector toggle updates
     tierBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             tierBtns.forEach(b => b.classList.remove('active'));
@@ -99,42 +92,81 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            /**
-             * MARKET-BEATING DISRUPTOR METRICS vs UBER & BOLT
-             * Cuts base rates by roughly 30%, slashes per-km rates, 
-             * and completely eliminates traffic time fees and surges.
-             */
+            // Market-beating rates (Low flag drop, flat low rates per KM, NO Surge, NO Time Fees)
             const marketBeatingBaseRates = { jhb: 18.00, pta: 18.00, cpt: 20.00, dbn: 16.00 };
-            const competitiveRatesPerKm = { 
-                go: 6.50,    // Budget Commuter (Undercuts Bolt Go)
-                xl: 9.00,    // Group/Family Tier
-                exec: 14.00  // Premium Tier 
-            };
+            const competitiveRatesPerKm = { go: 6.50, xl: 9.00, exec: 14.00 };
 
-            // Calculate Rider Upfront Costs
             const baseFlagDrop = marketBeatingBaseRates[zone] || 18.00;
             const ratePerKm = competitiveRatesPerKm[selectedTier] || 6.50;
             const cumulativeDistanceCost = ratePerKm * distance;
             const totalAggregatedFare = baseFlagDrop + cumulativeDistanceCost;
 
-            // Render Values to User Interface
-            if (baseRateDisplay) {
-                baseRateDisplay.textContent = `R${baseFlagDrop.toFixed(2)}`;
-            }
+            if (baseRateDisplay) baseRateDisplay.textContent = `R${baseFlagDrop.toFixed(2)}`;
             if (distanceRateDisplay) {
                 distanceRateDisplay.textContent = `R${cumulativeDistanceCost.toFixed(2)} (${distance}km @ R${ratePerKm.toFixed(2)}/km)`;
             }
             if (calculatedPrice) {
                 calculatedPrice.textContent = `R${totalAggregatedFare.toFixed(2)}`;
             }
-            
-            if (fareResult) {
-                fareResult.classList.remove('hidden');
-            }
+            if (fareResult) fareResult.classList.remove('hidden');
         });
     }
 
-    // --- 4. Smooth Transition Accordion FAQ Framework ---
+    // --- 4. Driver Recruiting Income Estimator Engine ---
+    const driverTripsInput = document.getElementById('driverTrips');
+    const driverAvgKmInput = document.getElementById('driverAvgKm');
+    const calcEarningsBtn = document.getElementById('calcEarningsBtn');
+    const driverResult = document.getElementById('driverResult');
+
+    const driverGrossDisplay = document.getElementById('driverGrossDisplay');
+    const gibelagoCommissionDisplay = document.getElementById('gibelagoCommissionDisplay');
+    const driverNetDisplay = document.getElementById('driverNetDisplay');
+    const competitorLossDisplay = document.getElementById('competitorLossDisplay');
+
+    if (calcEarningsBtn) {
+        calcEarningsBtn.addEventListener('click', () => {
+            const weeklyTrips = parseInt(driverTripsInput.value.trim(), 10);
+            const avgTripKm = parseFloat(driverAvgKmInput.value.trim());
+
+            if (isNaN(weeklyTrips) || weeklyTrips <= 0) {
+                alert('Please enter a valid number of weekly trips.');
+                return;
+            }
+            if (isNaN(avgTripKm) || avgTripKm <= 0) {
+                alert('Please enter a valid average trip distance.');
+                return;
+            }
+
+            // Constants based on our "GibelaGo" economy tier profile
+            const averageBaseFare = 18.00; 
+            const ratePerKm = 6.50;
+
+            // Compute standard trip averages
+            const estimatedSingleTripFare = averageBaseFare + (ratePerKm * avgTripKm);
+            const weeklyGrossFares = estimatedSingleTripFare * weeklyTrips;
+
+            // Platform Take-Rate Splits Comparison
+            const gibelagoCommission = weeklyGrossFares * 0.10; // Disruptive 10%
+            const competitorCommission = weeklyGrossFares * 0.25; // Standard 25% Uber/Bolt take
+            
+            const gibelagoNetPayout = weeklyGrossFares - gibelagoCommission;
+            const competitorNetPayout = weeklyGrossFares - competitorCommission;
+            const absoluteDriverSavings = competitorNetPayout - gibelagoNetPayout;
+
+            // Print values to the UI
+            if (driverGrossDisplay) driverGrossDisplay.textContent = `R${weeklyGrossFares.toFixed(2)}`;
+            if (gibelagoCommissionDisplay) gibelagoCommissionDisplay.textContent = `-R${gibelagoCommission.toFixed(2)}`;
+            if (driverNetDisplay) driverNetDisplay.textContent = `R${gibelagoNetPayout.toFixed(2)}`;
+            
+            if (competitorLossDisplay) {
+                competitorLossDisplay.textContent = `They take R${competitorCommission.toFixed(2)} instead of our R${gibelagoCommission.toFixed(2)}!`;
+            }
+
+            if (driverResult) driverResult.classList.remove('hidden');
+        });
+    }
+
+    // --- 5. Smooth Transition Accordion FAQ Framework ---
     const faqTriggers = document.querySelectorAll('.faq-trigger');
 
     faqTriggers.forEach(trigger => {
@@ -142,25 +174,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const parentItem = trigger.closest('.faq-item');
             const isOpen = parentItem.classList.contains('open');
 
-            // Collapse any currently open items first for clean accordion execution
             document.querySelectorAll('.faq-item').forEach(item => {
                 item.classList.remove('open');
                 const body = item.querySelector('.faq-body');
                 if (body) body.style.maxHeight = null;
             });
 
-            // Toggle active conditional target state
             if (!isOpen) {
                 parentItem.classList.add('open');
                 const body = parentItem.querySelector('.faq-body');
-                if (body) {
-                    body.style.maxHeight = body.scrollHeight + "px";
-                }
+                if (body) body.style.maxHeight = body.scrollHeight + "px";
             }
         });
     });
 
-    // --- 5. Scroll-Driven Premium Intersection Observer Triggers ---
+    // --- 6. Scroll-Driven Premium Intersection Observer Triggers ---
     const animatedElements = document.querySelectorAll('.fade-in-ready');
     
     if ('IntersectionObserver' in window) {
@@ -178,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
         animatedElements.forEach(el => el.classList.add('fade-in-visible'));
     }
 
-    // --- 6. Mobile Drawer Navigation Script Engine ---
+    // --- 7. Mobile Drawer Navigation Script Engine ---
     const mobileToggle = document.getElementById('mobileToggle');
     const mobileDrawer = document.getElementById('mobileDrawer');
     const mobileLinks = document.querySelectorAll('.mobile-link');
