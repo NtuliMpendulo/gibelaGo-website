@@ -232,23 +232,25 @@
 
                     <button type="button" class="btn btn-primary" id="calcEarningsBtn" style="width:100%;">Estimate Weekly Earnings</button>
 
+                    <!-- Safe, Legally Compliant & Margin-Optimized Output Container -->
                     <div id="driverResult" class="hidden" style="margin-top:15px;">
-                        <div class="fare-divider"></div>
-                        <div class="result-row">
+                        <div class="fare-divider" style="margin-bottom:12px;"></div>
+                        <div class="result-row" style="margin-bottom:8px; display:flex; justify-content:between;">
                             <span>Total Gross Fares:</span>
                             <b id="driverGrossDisplay">R0.00</b>
                         </div>
-                        <div class="result-row" style="color: #c0392b;">
+                        <div class="result-row" style="color: #c0392b; margin-bottom:12px; display:flex; justify-content:between;">
                             <span>GibelaGo Low Split (10%):</span>
                             <b id="gibelagoCommissionDisplay">-R0.00</b>
                         </div>
-                        <div class="result-row total-row" style="border-top: 1px solid #dddddd; padding-top:8px;">
-                            <span>Your Net Weekly Pay:</span>
-                            <span class="price-tag" id="driverNetDisplay" style="font-weight:bold; color:#27ae60;">R0.00</span>
+                        <div class="result-row total-row" style="border-top: 1px solid #dddddd; padding-top:12px; margin-bottom:15px; display:flex; justify-content:between; align-items:center;">
+                            <span style="font-weight:600;">Your Net Weekly Pay:</span>
+                            <span class="price-tag" id="driverNetDisplay" style="font-weight:bold; color:#27ae60; font-size:1.25rem;">R0.00</span>
                         </div>
-                        <div class="result-row" style="font-size:12px; color:var(--text-light); margin-top:10px; background:rgba(39, 174, 96, 0.08); padding:8px; border-radius:4px;">
-                            <span>💡 Versus Uber/Bolt (25% split):</span>
-                            <span id="competitorLossDisplay" style="font-weight:600; color:#c0392b;">They take extra fees!</span>
+                        <!-- Legally Protected Comparison Row Layout Tweak from Image.png -->
+                        <div class="result-row" style="font-size:12px; color:var(--text-light); background:rgba(39, 174, 96, 0.08); padding:10px; border-radius:6px; line-height:1.4;">
+                            <span>💡 <b>Versus Alternative Platforms (25% split):</b></span>
+                            <span id="competitorLossDisplay" style="display:block; margin-top:4px; font-weight:600; color:#c0392b;">Other platforms take extra fees!</span>
                         </div>
                     </div>
                 </div>
