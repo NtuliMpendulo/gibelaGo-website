@@ -149,4 +149,34 @@ document.addEventListener('DOMContentLoaded', () => {
         // Fallback for older browsers directly bypassing intercept checks
         animatedElements.forEach(el => el.classList.add('fade-in-visible'));
     }
+
+    // --- 6. Mobile Drawer Navigation Script Engine ---
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    if (mobileToggle && mobileDrawer) {
+        // Toggle slide position and hamburger open states on click
+        mobileToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileToggle.classList.toggle('open');
+            mobileDrawer.classList.toggle('open');
+        });
+
+        // Close the drawer overlay if a click is registered outside its container
+        document.addEventListener('click', (e) => {
+            if (!mobileDrawer.contains(e.target) && !mobileToggle.contains(e.target)) {
+                mobileToggle.classList.remove('open');
+                mobileDrawer.classList.remove('open');
+            }
+        });
+
+        // Close the drawer safely when clicking a landing anchor link
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileToggle.classList.remove('open');
+                mobileDrawer.classList.remove('open');
+            });
+        });
+    }
 });
