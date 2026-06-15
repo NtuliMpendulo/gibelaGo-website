@@ -8,12 +8,16 @@
 </head>
 <body>
 
+    <!-- ==========================================================================
+       Navigation Bar Framework Components
+       ========================================================================== -->
     <nav class="navbar">
         <div class="container">
             <a href="#" class="nav-brand">
                 <img src="assets/logo.png" alt="GibelaGo Logo" class="logo" onerror="this.src='https://via.placeholder.com/160x50?text=GibelaGo'">
             </a>
             
+            <!-- Desktop Layout Navigation Links -->
             <ul class="nav-menu" id="desktopMenu">
                 <li><a href="#" class="nav-link active">Home</a></li>
                 <li><a href="#features" class="nav-link">Features</a></li>
@@ -24,6 +28,7 @@
             </ul>
 
             <div class="nav-actions">
+                <!-- Native Language Selector Dropdown Menu -->
                 <div class="language-dropdown">
                     <button class="language-selector" id="langBtn">
                         🌐 English
@@ -36,6 +41,7 @@
                     </div>
                 </div>
 
+                <!-- Smartphone Hamburger Button Drawer Trigger -->
                 <button class="mobile-nav-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -44,6 +50,7 @@
             </div>
         </div>
 
+        <!-- Slide-out Responsive Mobile Drawer Menu Component Overlay -->
         <div class="mobile-drawer" id="mobileDrawer">
             <ul class="mobile-menu-links">
                 <li><a href="#" class="mobile-link">Home</a></li>
@@ -56,6 +63,9 @@
         </div>
     </nav>
 
+    <!-- ==========================================================================
+       Hero Landing Display & Rider Matrix Estimation Card
+       ========================================================================== -->
     <header class="hero" style="background-image: url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1400&q=80');">
         <div class="container">
             <div class="hero-content">
@@ -74,6 +84,7 @@
                     </div>
                 </div>
 
+                <!-- Premium Upfront Consumer Fare Estimator Module Widget -->
                 <div class="hero-widget-side">
                     <div class="estimator-card">
                         <h3>Know Before You Go</h3>
@@ -120,7 +131,7 @@
                                 <span>Total Estimated Fare:</span>
                                 <span class="price-tag" id="calculatedPrice">R0.00</span>
                             </div>
-                            <small class="fare-disclaimer">*Calculations match real-world transit meters. Actual fares vary based on real-time routing adjustments and localized traffic variations.</small>
+                            <small class="fare-disclaimer">*Calculations match market-disruptor parameters. Zero surge pricing applied. Fares fluctuate based solely on destination range adjustments.</small>
                         </div>
                     </div>
                 </div>
@@ -128,6 +139,9 @@
         </div>
     </header>
 
+    <!-- ==========================================================================
+       Core Marketing Strategic Proposition
+       ========================================================================== -->
     <section id="features" class="features container fade-in-ready">
         <div class="section-header">
             <span class="section-subtitle">Core Assets</span>
@@ -141,17 +155,20 @@
             </div>
             <div class="feature-card">
                 <span class="feature-icon">💰</span>
-                <h4>Budget-First Pricing Matrix</h4>
-                <p>No hidden surges or unexpected fees. Clear rates designed to fit your day-to-day budget.</p>
+                <h4>Market-Beating Pricing Matrix</h4>
+                <p>No unexpected hidden surges or traffic penalties. High-efficiency flat rates designed to protect your wallet.</p>
             </div>
             <div class="feature-card">
                 <span class="feature-icon">⚡</span>
                 <h4>High-Speed Dispatches</h4>
-                <p>Optimized pairing systems match you with neighborhood drivers instantly to save you time.</p>
+                <p>Optimized regional pairing engines match you with close neighborhood drivers instantly to save you time.</p>
             </div>
         </div>
     </section>
 
+    <!-- ==========================================================================
+       Interactive Dual-Portal Panel System (Rider vs Driver Earnings)
+       ========================================================================== -->
     <section id="portal" class="portal-section container fade-in-ready">
         <div class="section-header">
             <span class="section-subtitle">User Channels</span>
@@ -163,28 +180,31 @@
             <button class="portal-tab-btn" data-portal="driverPortal">Driver Partnership</button>
         </div>
 
+        <!-- Tab Panel 1: Rider Instruction Cards -->
         <div id="riderPortal" class="portal-content active">
             <div class="steps-grid">
                 <div class="step-card">
                     <div class="step-number">1</div>
                     <h5>Pin Your Route</h5>
-                    <p>Open the app and configure your destination base overlay.</p>
+                    <p>Open the mobile platform app and configure your destination base overlay mapping.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">2</div>
                     <h5>Verify the Quote</h5>
-                    <p>Review transparent tier breakdowns before confirmation.</p>
+                    <p>Review clear cost breakdowns transparently before requesting your dispatcher.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">3</div>
                     <h5>Enjoy the Trip</h5>
-                    <p>Meet your assigned driver and reach your destination safely.</p>
+                    <p>Meet your assigned driver partner and arrive at your target destination safely.</p>
                 </div>
             </div>
         </div>
 
+        <!-- Tab Panel 2: Driver Portal Content with Active Recruitment Estimator Widget -->
         <div id="driverPortal" class="portal-content hidden">
             <div class="driver-split-view">
+                <!-- Compliance Requirements Column -->
                 <div class="requirement-box">
                     <h5>Minimum Operational Compliance</h5>
                     <ul class="clean-list">
@@ -192,16 +212,53 @@
                         <li><span class="check-mark">✓</span> Insured late-model four-door hatchback or sedan asset</li>
                         <li><span class="check-mark">✓</span> Clean background verification screening check</li>
                     </ul>
+                    <a href="#" class="btn btn-secondary" style="margin-top:20px; display:inline-block;">Register To Drive</a>
                 </div>
-                <div style="display:flex; flex-direction:column; justify-content:center;">
-                    <h4>Earn On Your Own Terms</h4>
-                    <p>Enjoy low platform service splits, weekly payout cycles, and full freedom to plan your schedule.</p>
-                    <a href="#" class="btn btn-secondary" style="margin-top:20px; align-self:flex-start;">Register To Drive</a>
+
+                <!-- Driver Take-Home Premium Recruiting Evaluation Module -->
+                <div class="estimator-card" style="box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #e0e0e0;">
+                    <h3>Calculate Your Take-Home Pay</h3>
+                    <p style="color:var(--text-light); font-size:13px; margin-bottom:15px;">See how much more you keep per week with GibelaGo's disruptive 10% commission framework compared to competitor apps.</p>
+                    
+                    <div class="input-group">
+                        <label for="driverTrips">Estimated Completed Trips Per Week</label>
+                        <input type="number" id="driverTrips" placeholder="e.g. 40" min="1" value="40">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="driverAvgKm">Average Distance Per Trip (km)</label>
+                        <input type="number" id="driverAvgKm" placeholder="e.g. 12" min="1" value="12">
+                    </div>
+
+                    <button type="button" class="btn btn-primary" id="calcEarningsBtn" style="width:100%;">Estimate Weekly Earnings</button>
+
+                    <div id="driverResult" class="hidden" style="margin-top:15px;">
+                        <div class="fare-divider"></div>
+                        <div class="result-row">
+                            <span>Total Gross Fares:</span>
+                            <b id="driverGrossDisplay">R0.00</b>
+                        </div>
+                        <div class="result-row" style="color: #c0392b;">
+                            <span>GibelaGo Low Split (10%):</span>
+                            <b id="gibelagoCommissionDisplay">-R0.00</b>
+                        </div>
+                        <div class="result-row total-row" style="border-top: 1px solid #dddddd; padding-top:8px;">
+                            <span>Your Net Weekly Pay:</span>
+                            <span class="price-tag" id="driverNetDisplay" style="font-weight:bold; color:#27ae60;">R0.00</span>
+                        </div>
+                        <div class="result-row" style="font-size:12px; color:var(--text-light); margin-top:10px; background:rgba(39, 174, 96, 0.08); padding:8px; border-radius:4px;">
+                            <span>💡 Versus Uber/Bolt (25% split):</span>
+                            <span id="competitorLossDisplay" style="font-weight:600; color:#c0392b;">They take extra fees!</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ==========================================================================
+       Safety Metrics Compliance Framework Displays
+       ========================================================================== -->
     <section id="safety" class="safety-section container fade-in-ready">
         <div class="section-header">
             <span class="section-subtitle">Zero Compromise</span>
@@ -211,16 +268,19 @@
             <div class="safety-card">
                 <span class="safety-icon">🔒</span>
                 <h5>Real-time GPS Tracking</h5>
-                <p>Every dispatch is continuously tracked by our central operations room from start to finish.</p>
+                <p>Every single trip is continuously tracked by our central urban operations room from start to finish.</p>
             </div>
             <div class="safety-card">
                 <span class="safety-icon">🚨</span>
                 <h5>In-App Emergency SOS Trigger</h5>
-                <p>Instantly notify local private security networks and our operations desk with one tap.</p>
+                <p>Instantly notify local private armed security tactical networks and our response desk with one single tap.</p>
             </div>
         </div>
     </section>
 
+    <!-- ==========================================================================
+       Accordion Interface FAQ Components
+       ========================================================================== -->
     <section id="help" class="help-section container fade-in-ready">
         <div class="section-header">
             <span class="section-subtitle">FAQ Desk</span>
@@ -230,24 +290,27 @@
             <div class="faq-item">
                 <button class="faq-trigger">How does the upfront fare matrix calculate ride pricing? <span>+</span></button>
                 <div class="faq-body">
-                    <p>Just like standard ridesharing networks, the calculation uses a flat flag-drop base rate plus a fixed per-kilometer fee according to your ride tier. However, GibelaGo optimizes these distance multipliers to keep rides significantly more affordable for everyday community commuters.</p>
+                    <p>The calculation uses a low localized base flag-drop fee plus a flat fixed per-kilometer rate according to your ride tier. GibelaGo completely cuts out surge pricing parameters and trip traffic duration multipliers to offer a highly affordable, stable community commuter asset.</p>
                 </div>
             </div>
             <div class="faq-item">
-                <button class="faq-trigger">What areas do you currently cover? <span>+</span></button>
+                <button class="faq-trigger">What geographical areas do you currently cover? <span>+</span></button>
                 <div class="faq-body">
-                    <p>We provide full coverage across key metropolitan zones including Greater Johannesburg, Pretoria, Cape Town, and Durban, with expanding community transit links.</p>
+                    <p>We provide full operational coverage across key metropolitan zones including Greater Johannesburg, Pretoria, Cape Town, and Durban, with rapidly expanding neighborhood local perimeter transit links.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ==========================================================================
+       Footer Brand Architecture Display Blocks
+       ========================================================================== -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid-top">
                 <div class="footer-links-column">
                     <h4>GibelaGo Logistics</h4>
-                    <p style="font-size:14px; line-height:1.5;">Empowering urban mobility and logistical efficiency tailored for South African communities.</p>
+                    <p style="font-size:14px; line-height:1.5;">Empowering urban mobility and logistical efficiency tailored directly for South African communities.</p>
                 </div>
                 <div class="footer-links-column">
                     <h4>Company</h4>
@@ -274,6 +337,7 @@
         </div>
     </footer>
 
+    <!-- Core Interactive Initialization Script -->
     <script src="script.js"></script>
 </body>
 </html>
