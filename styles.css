@@ -639,10 +639,76 @@ select, input[type="number"] {
     color: var(--primary-teal);
 }
 
+/* ==========================================================================
+   GibelaGo Regulatory Compliance Design Blocks
+   ========================================================================== */
+.footer-legal-compliance {
+    margin: 30px 0 15px 0;
+    padding-top: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.legal-disclaimer-box {
+    background-color: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid var(--primary-orange);
+    padding: 20px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+}
+
+.legal-text {
+    font-size: 12px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 12px;
+}
+
+.legal-text:last-child {
+    margin-bottom: 0;
+}
+
+.legal-text strong {
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 600;
+}
+
+.legal-meta-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding-bottom: 25px;
+}
+
+.copyright-text {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.meta-links-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.meta-link {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.55);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+.meta-link:hover {
+    color: var(--primary-teal);
+    text-decoration: underline;
+}
+
+/* Base Bottom Bar */
 .footer-bottom-bar {
     display: flex;
     justify-content: space-between;
-    padding-top: 30px;
+    padding-top: 15px;
     font-size: 13px;
 }
 
@@ -678,6 +744,17 @@ select, input[type="number"] {
 
     .hero h2 {
         font-size: 32px;
+    }
+
+    .legal-meta-links {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .meta-links-group {
+        flex-direction: column;
+        gap: 8px;
     }
 
     .footer-bottom-bar {
