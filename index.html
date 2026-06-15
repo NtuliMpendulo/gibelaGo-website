@@ -10,7 +10,7 @@
 <body>
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="container">
+        <div class="container nav-container">
             <div class="nav-brand">
                 <img src="gibelaGo_logo_white.png" alt="GibelaGo" class="logo">
             </div>
@@ -22,48 +22,81 @@
                 <li><a href="#safety" class="nav-link">Safety</a></li>
                 <li><a href="#help" class="nav-link">Help</a></li>
             </ul>
-            <div class="language-selector">
-                <span>EN</span>
-                <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
-                    <path d="M1 1L6 6L11 1" stroke="#FF6B35" stroke-width="2" stroke-linecap="round"/>
-                </svg>
+            <div class="language-dropdown">
+                <button class="language-selector" id="langBtn" aria-haspopup="true">
+                    <span>EN</span>
+                    <svg width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+                        <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <div class="dropdown-menu" id="langMenu">
+                    <a href="#" class="dropdown-item active">English (EN)</a>
+                    <a href="#" class="dropdown-item">isiZulu (ZU)</a>
+                    <a href="#" class="dropdown-item">isiXhosa (XH)</a>
+                    <a href="#" class="dropdown-item">Afrikaans (AF)</a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home" style="background-image: url('https://d2xsxph8kpxj0f.cloudfront.net/310519663608381135/NiMMDhXiVCjL2E85K2xUbv/hero-bg-ATEF5htmoiraxdb47S4Gua.webp');">
+    <!-- Hero Section with Fare Estimator Matrix -->
+    <section class="hero" id="home">
         <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <div class="hero-left">
-                <div class="logo-large">
-                    <img src="gibelaGo_logo_white.png" alt="GibelaGo Logo">
+        <div class="container hero-container">
+            <div class="hero-text-side">
+                <h2>Your Ride. Your Way.<br>Rainbow Nation.<br><span class="highlight">One Journey. Together.</span></h2>
+                <p class="hero-lead">Safe, affordable, and reliable rides built by South Africans, for South Africans. Rooted deeply in the spirit of Ubuntu.</p>
+                
+                <div class="cta-buttons">
+                    <a href="#ride" class="btn btn-primary">📥 Download Rider App</a>
+                    <a href="#drive" class="btn btn-secondary">👤 Become a Driver</a>
+                </div>
+
+                <div class="app-links">
+                    <a href="#" class="app-link">
+                        <span class="store-icon">▶</span>
+                        <div><small>GET IT ON</small><br><strong>Google Play</strong></div>
+                    </a>
+                    <a href="#" class="app-link">
+                        <span class="store-icon">🍎</span>
+                        <div><small>Download on the</small><br><strong>App Store</strong></div>
+                    </a>
                 </div>
             </div>
 
-            <div class="hero-right">
-                <div class="hero-text">
-                    <h2>Your Ride. Your Way.<br>Rainbow Nation.<br><span class="highlight">One Journey. Together.</span></h2>
-                    <p>Safe, affordable and reliable rides for every South African, every day.</p>
-                    
-                    <div class="cta-buttons">
-                        <button class="btn btn-primary">
-                            <span>📥</span> Download Rider App
-                        </button>
-                        <button class="btn btn-secondary">
-                            <span>👤</span> Become a Driver
-                        </button>
+            <!-- Amazing Interactive Fare Estimator Card -->
+            <div class="hero-widget-side">
+                <div class="estimator-card">
+                    <h3>Where are you heading?</h3>
+                    <p>Check your transparent upfront fare estimation instantenously.</p>
+                    <div class="estimator-form">
+                        <div class="input-group">
+                            <label for="pickup">Pickup City / Area</label>
+                            <select id="pickup">
+                                <option value="" disabled selected>Select location...</option>
+                                <option value="jhb">Johannesburg / Sandton</option>
+                                <option value="pta">Pretoria / Tshwane</option>
+                                <option value="cpt">Cape Town / CBD</option>
+                                <option value="dbn">Durban / Umhlanga</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="tier">Service Class</label>
+                            <div class="tier-selector">
+                                <button class="tier-btn active" data-tier="go">GibelaGo</button>
+                                <button class="tier-btn" data-tier="xl">GibelaXL</button>
+                                <button class="tier-btn" data-tier="exec">GibelaExec</button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-estimate" id="calcFareBtn">Calculate Upfront Fare</button>
                     </div>
-
-                    <div class="app-links">
-                        <a href="#" class="app-link">
-                            <span class="store-icon">▶</span>
-                            GET IT ON<br>Google Play
-                        </a>
-                        <a href="#" class="app-link">
-                            <span class="store-icon">🍎</span>
-                            Download on the<br>App Store
-                        </a>
+                    <div class="estimator-result hidden" id="fareResult">
+                        <div class="fare-divider"></div>
+                        <div class="result-row">
+                            <span>Estimated Fare:</span>
+                            <span class="price-tag" id="calculatedPrice">R0.00</span>
+                        </div>
+                        <small class="fare-disclaimer">Fares are calculated honestly based on local market distances without surge traps.</small>
                     </div>
                 </div>
             </div>
@@ -78,405 +111,192 @@
                 <p class="section-subtitle">Proudly South African. Rooted in Ubuntu Values.</p>
             </div>
             <div class="about-content">
-                <div class="about-text">
+                <div class="about-text-wrapper">
                     <h3>Our Mission</h3>
-                    <p>GibelaGo is a proudly South African ride-hailing platform dedicated to providing safe, affordable, and reliable transportation for every person in our nation. We believe in the power of Ubuntu - the philosophy that "I am because we are" - and we're building a community where riders and drivers support each other.</p>
-                    <h3 style="margin-top: 30px;">Our Values</h3>
-                    <div class="values-list">
-                        <div class="value-item">
-                            <span class="value-icon">🤝</span>
-                            <div>
-                                <h4>Ubuntu</h4>
-                                <p>Community first. We care for each other and build together.</p>
-                            </div>
-                        </div>
-                        <div class="value-item">
-                            <span class="value-icon">🛡️</span>
-                            <div>
-                                <h4>Safety</h4>
-                                <p>Your safety is our top priority in every ride.</p>
-                            </div>
-                        </div>
-                        <div class="value-item">
-                            <span class="value-icon">💰</span>
-                            <div>
-                                <h4>Fairness</h4>
-                                <p>Transparent pricing and fair treatment for all.</p>
-                            </div>
-                        </div>
-                        <div class="value-item">
-                            <span class="value-icon">⚡</span>
-                            <div>
-                                <h4>Innovation</h4>
-                                <p>Constantly improving technology for better experiences.</p>
-                            </div>
-                        </div>
+                    <p>GibelaGo is a proudly homegrown digital ride-hailing platform reimagining mobility across our beautiful nation. We believe explicitly in the deep-seated philosophy of **Ubuntu**—*"I am because we are"*—creating an ecosystem where everyday commuters and local drivers seamlessly empower one another via fair commercial standards.</p>
+                </div>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon-box">🤝</div>
+                        <h4>Ubuntu</h4>
+                        <p>Community first approach. We look after our people on every route.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon-box">🛡️</div>
+                        <h4>Safety</h4>
+                        <p>Zero compromises. Stringent verification processes for absolute security.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon-box">💰</div>
+                        <h4>Fairness</h4>
+                        <p>Transparent pricing metrics ensuring drivers retain the rewards of their labor.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon-box">⚡</div>
+                        <h4>Innovation</h4>
+                        <p>State-of-the-art native real-time mapping built for local infrastructure.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why Choose GibelaGo -->
+    <!-- Why Choose Section -->
     <section class="features">
         <div class="container">
-            <h2 class="section-title">Why Choose GibelaGo?</h2>
+            <h2 class="section-title text-center">Why Choose GibelaGo?</h2>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">🛡️</div>
                     <h3>Safe Rides</h3>
-                    <p>Your safety is our priority. Verified drivers, in-app tracking & 24/7 support.</p>
+                    <p>Your safety is our ongoing vow. Fully vetted operators, background tracking, and live telemetry maps.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">💰</div>
                     <h3>Affordable Fares</h3>
-                    <p>Great prices, transparent fares and no hidden charges.</p>
+                    <p>Guaranteed clear pricing equations without unexpected micro-fees at destination arrival.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">👥</div>
                     <h3>Friendly Drivers</h3>
-                    <p>Courteous, professional drivers who treat you like family.</p>
+                    <p>Courteous, highly certified professionals treats commuters with local warmth and pride.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">⚡</div>
                     <h3>Fast Service</h3>
-                    <p>Quick pick-ups and smart routing to get you there on time.</p>
+                    <p>High-density matching algorithms routing nearest available safe cars within moments.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Ride Section -->
-    <section class="ride-section" id="ride">
+    <!-- Functional Toggle Interactive Ride/Drive Section -->
+    <section class="portal-section" id="ride">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">How to Ride with GibelaGo</h2>
-                <p class="section-subtitle">Get from A to B safely, affordably, and reliably</p>
+            <div class="portal-tabs">
+                <button class="portal-tab-btn active" data-portal="rider-portal">How to Ride</button>
+                <button class="portal-tab-btn" data-portal="driver-portal">Become a Driver</button>
             </div>
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-number">1</div>
-                    <h3>Download the App</h3>
-                    <p>Get the GibelaGo app from Google Play or App Store. Sign up with your phone number and create your profile in seconds.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">2</div>
-                    <h3>Enter Your Destination</h3>
-                    <p>Tell us where you're going. Our smart algorithm shows you the fare upfront with no hidden charges.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">3</div>
-                    <h3>Request a Ride</h3>
-                    <p>Tap to request. A verified driver nearby will accept your ride within seconds. Track them in real-time.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">4</div>
-                    <h3>Enjoy Your Ride</h3>
-                    <p>Sit back and relax. Your driver is professional, courteous, and knows the best routes. Rate them after your ride.</p>
-                </div>
-            </div>
-            <div class="ride-features">
-                <h3>Rider Features</h3>
-                <div class="features-list">
-                    <div class="feature-item">
-                        <span class="feature-icon">✓</span>
-                        <span>Transparent pricing with upfront fares</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">✓</span>
-                        <span>Real-time driver tracking</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">✓</span>
-                        <span>Emergency support button (24/7)</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">✓</span>
-                        <span>Multiple payment methods</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">✓</span>
-                        <span>Share ride details with trusted contacts</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">✓</span>
-                        <span>Ride history and receipts</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Drive Section -->
-    <section class="drive-section" id="drive">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Become a GibelaGo Driver</h2>
-                <p class="section-subtitle">Earn money on your own schedule with flexible work</p>
-            </div>
-            <div class="requirements-grid">
-                <div class="requirement-card">
-                    <h3>Requirements</h3>
-                    <ul>
-                        <li>✓ 21 years or older</li>
-                        <li>✓ Valid South African driver's license</li>
-                        <li>✓ Vehicle registered in your name</li>
-                        <li>✓ Valid vehicle insurance</li>
-                        <li>✓ Clean driving record</li>
-                        <li>✓ Smartphone with internet connection</li>
-                    </ul>
+            <!-- Rider Portal Content -->
+            <div class="portal-content active" id="rider-portal">
+                <div class="section-header">
+                    <h2 class="section-title">Get Moving In 4 Simple Steps</h2>
                 </div>
-                <div class="requirement-card">
-                    <h3>Why Drive with Us?</h3>
-                    <ul>
-                        <li>✓ Competitive earnings and transparent rates</li>
-                        <li>✓ Work whenever you want, as much as you want</li>
-                        <li>✓ 24/7 driver support and assistance</li>
-                        <li>✓ Accident protection and insurance coverage</li>
-                        <li>✓ Community of professional drivers</li>
-                        <li>✓ Weekly payouts to your bank account</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="driver-steps">
-                <h3>How to Get Started</h3>
                 <div class="steps-grid">
                     <div class="step-card">
                         <div class="step-number">1</div>
-                        <h4>Apply Online</h4>
-                        <p>Fill out the driver application form with your details and vehicle information.</p>
+                        <h3>Download the App</h3>
+                        <p>Secure the app on Google Play or iOS App Store instantly using basic details.</p>
                     </div>
                     <div class="step-card">
                         <div class="step-number">2</div>
-                        <h4>Verification</h4>
-                        <p>We verify your documents and conduct a background check (usually 2-3 days).</p>
+                        <h3>Enter Destination</h3>
+                        <p>Input where you are headed. Pinpoint exactly where you want to be dropped off.</p>
                     </div>
                     <div class="step-card">
                         <div class="step-number">3</div>
-                        <h4>Download App</h4>
-                        <p>Get the GibelaGo Driver app and complete your profile setup.</p>
+                        <h3>Request a Car</h3>
+                        <p>Match with an executive driver ready to receive you securely inside minutes.</p>
                     </div>
                     <div class="step-card">
                         <div class="step-number">4</div>
-                        <h4>Start Earning</h4>
-                        <p>Go online and start accepting rides. Earn money immediately.</p>
+                        <h3>Enjoy Your Journey</h3>
+                        <p>Sit back and relax. Enjoy comfortable trips monitored continuously by control dispatch teams.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Driver Portal Content -->
+            <div class="portal-content hidden" id="driver-portal">
+                <div class="section-header">
+                    <h2 class="section-title">Drive and Earn With Complete Control</h2>
+                </div>
+                <div class="driver-split-view">
+                    <div class="requirement-box">
+                        <h3>Minimum Requirements</h3>
+                        <ul class="clean-list">
+                            <li><span class="check-mark">✓</span> Age limit structural baseline: 21 years or older</li>
+                            <li><span class="check-mark">✓</span> Valid South African Professional Driving Permit (PrDP)</li>
+                            <li><span class="check-mark">✓</span> Fully registered, pristine running operational vehicle</li>
+                            <li><span class="check-mark">✓</span> Comprehensive commercial passenger liability insurance</li>
+                        </ul>
+                    </div>
+                    <div class="requirement-box">
+                        <h3>Why Partner With Us?</h3>
+                        <ul class="clean-list">
+                            <li><span class="check-mark">✓</span> Industry leading competitive platform percentage splits</li>
+                            <li><span class="check-mark">✓</span> Absolute operational freedom over selected working hours</li>
+                            <li><span class="check-mark">✓</span> Direct emergency roadside assistance dispatch features</li>
+                            <li><span class="check-mark">✓</span> Consistent, predictable weekly payouts straight into your account</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Safety Section -->
+    <!-- Safety Center -->
     <section class="safety-section" id="safety">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Your Safety is Our Priority</h2>
-                <p class="section-subtitle">We're committed to making every ride safe and secure</p>
+                <h2 class="section-title">A Security Fortress Around Every Ride</h2>
+                <p class="section-subtitle">We protect your physical and digital peace of mind at every turn.</p>
             </div>
-            <div class="safety-features">
+            <div class="safety-grid">
                 <div class="safety-card">
                     <div class="safety-icon">🔐</div>
-                    <h3>Verified Drivers</h3>
-                    <p>All drivers undergo thorough background checks and vehicle inspections before joining our platform.</p>
+                    <h3>Thorough Vetting</h3>
+                    <p>Rigorous identity validation frameworks checking criminal background and technical fitness metrics.</p>
                 </div>
                 <div class="safety-card">
                     <div class="safety-icon">📍</div>
-                    <h3>Real-Time Tracking</h3>
-                    <p>Share your ride details with trusted contacts. They can track your journey in real-time for added peace of mind.</p>
+                    <h3>Live Journey Tracking</h3>
+                    <p>Share live encrypted route feeds instantly with friends and family from within the application interface.</p>
                 </div>
                 <div class="safety-card">
                     <div class="safety-icon">🆘</div>
-                    <h3>Emergency Support</h3>
-                    <p>One-tap access to emergency services and 24/7 customer support. Help is always just a button away.</p>
-                </div>
-                <div class="safety-card">
-                    <div class="safety-icon">⭐</div>
-                    <h3>Rating System</h3>
-                    <p>Rate every driver and rider. Low-rated users may be removed from the platform to maintain safety standards.</p>
-                </div>
-                <div class="safety-card">
-                    <div class="safety-icon">🛡️</div>
-                    <h3>Insurance Coverage</h3>
-                    <p>All rides are covered by comprehensive insurance. In case of any incident, you're protected.</p>
-                </div>
-                <div class="safety-card">
-                    <div class="safety-icon">📱</div>
-                    <h3>In-App Communication</h3>
-                    <p>All communication happens through the app. Your personal phone number is never shared with drivers or riders.</p>
-                </div>
-            </div>
-            <div class="safety-tips">
-                <h3>Safety Tips for Riders</h3>
-                <div class="tips-list">
-                    <div class="tip-item">
-                        <span class="tip-number">•</span>
-                        <span>Always verify the driver's name and vehicle details match the app</span>
-                    </div>
-                    <div class="tip-item">
-                        <span class="tip-number">•</span>
-                        <span>Share your ride details with a trusted contact before the ride starts</span>
-                    </div>
-                    <div class="tip-item">
-                        <span class="tip-number">•</span>
-                        <span>Sit in the back seat for your safety</span>
-                    </div>
-                    <div class="tip-item">
-                        <span class="tip-number">•</span>
-                        <span>Keep your belongings secure and close to you</span>
-                    </div>
-                    <div class="tip-item">
-                        <span class="tip-number">•</span>
-                        <span>Report any safety concerns immediately using the in-app report feature</span>
-                    </div>
+                    <h3>24/7 In-App Panic Link</h3>
+                    <p>A direct SOS feature to immediately dispatch private armed response or roadside medical aid teams.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Help Section -->
+    <!-- FAQ Section -->
     <section class="help-section" id="help">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Frequently Asked Questions</h2>
-                <p class="section-subtitle">Find answers to common questions about GibelaGo</p>
+                <p class="section-subtitle">Transparent answers regarding platform inner-workings</p>
             </div>
-            <div class="faq-container">
+            <div class="faq-accordion-wrapper">
                 <div class="faq-item">
-                    <div class="faq-question">
-                        <h4>How do I book a ride?</h4>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer" style="display: none;">
-                        <p>Download the GibelaGo app, sign up with your phone number, enter your destination, and tap "Request Ride". A nearby driver will accept your ride within seconds.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h4>What payment methods do you accept?</h4>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer" style="display: none;">
-                        <p>We accept multiple payment methods including credit/debit cards, mobile money, and cash. You can add your preferred payment method in the app settings.</p>
+                    <button class="faq-trigger">
+                        <span>How do I securely book a ride?</span>
+                        <span class="faq-icon-indicator">+</span>
+                    </button>
+                    <div class="faq-body">
+                        <p>Simply register inside the mobile interface using your cell number, verify with an OTP code, type in your precise visual pin destination, check the upfront quote match and tap request!</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">
-                        <h4>Are GibelaGo rides insured?</h4>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer" style="display: none;">
-                        <p>Yes, all GibelaGo rides are covered by comprehensive insurance. This protects both riders and drivers in case of any incident during the ride.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h4>How are fares calculated?</h4>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer" style="display: none;">
-                        <p>Fares are calculated based on distance, time, and demand. You'll see the estimated fare before confirming your ride. There are no hidden charges.</p>
+                    <button class="faq-trigger">
+                        <span>What payment channels do you offer?</span>
+                        <span class="faq-icon-indicator">+</span>
+                    </button>
+                    <div class="faq-body">
+                        <p>We handle seamless payments natively! Securely bind your South African debit/credit cards, pay via instant EFT configurations, or choose cash settlement options seamlessly prior to confirmation.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">
-                        <h4>What if I need to cancel my ride?</h4>
-                        <span class="faq-toggle">+</span>
+                    <button class="faq-trigger">
+                        <span>Are trips covered via insurance?</span>
+                        <span class="faq-icon-indicator">+</span>
+                    </button>
+                    <div class="faq-body">
+                        <p>Yes, absolutely. Every individual trip initiated inside our systems is protected fully by extensive third-party commercial passenger liability safeguards from start to stop.</p>
                     </div>
-                    <div class="faq-answer" style="display: none;">
-                        <p>You can cancel your ride anytime before the driver arrives without any charge. If you cancel after the driver has started heading to you, a small cancellation fee may apply.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h4>How do I become a GibelaGo driver?</h4>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer" style="display: none;">
-                        <p>Visit our website and click "Become a Driver". Fill out the application form, submit your documents, and wait for verification (usually 2-3 days). Once approved, download the driver app and start earning!</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h4>What is your customer support availability?</h4>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer" style="display: none;">
-                        <p>We offer 24/7 customer support through the app, email, and phone. You can reach us anytime you need assistance.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h4>Is my personal information safe?</h4>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer" style="display: none;">
-                        <p>Yes, we use industry-leading encryption and security measures to protect your personal information. Your phone number is never shared with drivers or riders without your consent.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="help-contact">
-                <h3>Still Need Help?</h3>
-                <p>Contact our support team:</p>
-                <div class="contact-methods">
-                    <a href="tel:+27661234567" class="contact-link">📞 Call Us: 066 123 4567</a>
-                    <a href="mailto:support@gibelago.com" class="contact-link">📧 Email: support@gibelago.com</a>
-                    <a href="#" class="contact-link">💬 Live Chat (Available 24/7)</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="testimonials">
-        <div class="container">
-            <h2 class="section-title">What Our Community Says ❤️</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23FF6B35'/%3E%3Ctext x='50' y='60' font-family='Poppins' font-size='40' font-weight='700' fill='white' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E" alt="Nomsa" class="testimonial-avatar">
-                        <div>
-                            <h4>Nomsa P.</h4>
-                            <p class="testimonial-role">Rider</p>
-                        </div>
-                    </div>
-                    <p class="testimonial-text">"GibelaGo is my everyday go-to. It's safe, reliable and the drivers are always so kind."</p>
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23004E89'/%3E%3Ctext x='50' y='60' font-family='Poppins' font-size='40' font-weight='700' fill='white' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E" alt="Thabo" class="testimonial-avatar">
-                        <div>
-                            <h4>Thabo M.</h4>
-                            <p class="testimonial-role">Rider</p>
-                        </div>
-                    </div>
-                    <p class="testimonial-text">"Affordable, convenient and the app is so easy to use. Highly recommend!"</p>
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23FF6B35'/%3E%3Ctext x='50' y='60' font-family='Poppins' font-size='40' font-weight='700' fill='white' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E" alt="Sipho" class="testimonial-avatar">
-                        <div>
-                            <h4>Sipho D.</h4>
-                            <p class="testimonial-role">Driver</p>
-                        </div>
-                    </div>
-                    <p class="testimonial-text">"Driving with GibelaGo has changed my life. Great support and fair earnings."</p>
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23004E89'/%3E%3Ctext x='50' y='60' font-family='Poppins' font-size='40' font-weight='700' fill='white' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E" alt="Lindiwe" class="testimonial-avatar">
-                        <div>
-                            <h4>Lindiwe K.</h4>
-                            <p class="testimonial-role">Driver</p>
-                        </div>
-                    </div>
-                    <p class="testimonial-text">"The platform is professional, the community is respectful and the service is excellent."</p>
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
                 </div>
             </div>
         </div>
@@ -485,62 +305,33 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>COMPANY</h4>
-                    <ul>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Press</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
+            <div class="footer-grid-top">
+                <div class="footer-brand-column">
+                    <img src="gibelaGo_logo_white.png" alt="GibelaGo Logo" class="footer-logo">
+                    <p>Proudly advancing local ecosystem transport across South Africa. Experience mobility through Ubuntu.</p>
                 </div>
-
-                <div class="footer-section">
-                    <h4>RIDERS</h4>
-                    <ul>
-                        <li><a href="#ride">How It Works</a></li>
-                        <li><a href="#">Fare Estimate</a></li>
-                        <li><a href="#safety">Safety</a></li>
-                        <li><a href="#help">Help Centre</a></li>
-                    </ul>
+                <div class="footer-links-column">
+                    <h4>Company</h4>
+                    <a href="#about">About Us</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Press Kit</a>
                 </div>
-
-                <div class="footer-section">
-                    <h4>DRIVERS</h4>
-                    <ul>
-                        <li><a href="#drive">Become a Driver</a></li>
-                        <li><a href="#">Driver Support</a></li>
-                        <li><a href="#">Earnings</a></li>
-                        <li><a href="#">Driver App</a></li>
-                    </ul>
+                <div class="footer-links-column">
+                    <h4>Riders</h4>
+                    <a href="#ride">How It Works</a>
+                    <a href="#safety">Safety Matrix</a>
+                    <a href="#help">Help Hub</a>
                 </div>
-
-                <div class="footer-section">
-                    <h4>CONTACT US</h4>
-                    <ul>
-                        <li><a href="tel:+27661234567">📞 066 123 4567</a></li>
-                        <li><a href="mailto:support@gibelago.com">📧 support@gibelago.com</a></li>
-                        <li><a href="#">🌐 www.gibelago.com</a></li>
-                        <li>📍 South Africa</li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h4>FOLLOW US</h4>
-                    <div class="social-links">
-                        <a href="#" class="social-icon">f</a>
-                        <a href="#" class="social-icon">📷</a>
-                        <a href="#" class="social-icon">𝕏</a>
-                        <a href="#" class="social-icon">▶️</a>
-                        <a href="#" class="social-icon">in</a>
-                    </div>
+                <div class="footer-links-column">
+                    <h4>Contact Support</h4>
+                    <a href="tel:+27661234567">📞 066 123 4567</a>
+                    <a href="mailto:support@gibelago.com">📧 support@gibelago.com</a>
+                    <span>📍 Johannesburg, ZA</span>
                 </div>
             </div>
-
-            <div class="footer-bottom">
-                <div class="footer-tagline">UBUNTU • RESPECT • TOGETHER WE GO FURTHER</div>
-                <div class="footer-copyright">© 2026 gibelago.com - All Rights Reserved.</div>
+            <div class="footer-bottom-bar">
+                <div>UBUNTU • RESPECT • TOGETHER WE GO FURTHER</div>
+                <div>© 2026 gibelago.com. Built with pride. All Rights Reserved.</div>
             </div>
         </div>
     </footer>
