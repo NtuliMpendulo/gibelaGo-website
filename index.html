@@ -8,13 +8,13 @@
 </head>
 <body>
 
-    <nav class="navbar">
+   <nav class="navbar">
         <div class="container">
             <a href="#" class="nav-brand">
                 <img src="assets/logo.png" alt="GibelaGo Logo" class="logo" onerror="this.src='https://via.placeholder.com/160x50?text=GibelaGo'">
             </a>
             
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="desktopMenu">
                 <li><a href="#" class="nav-link active">Home</a></li>
                 <li><a href="#features" class="nav-link">Features</a></li>
                 <li><a href="#about" class="nav-link">About Us</a></li>
@@ -23,19 +23,38 @@
                 <li><a href="#help" class="nav-link">Help</a></li>
             </ul>
 
-            <div class="language-dropdown">
-                <button class="language-selector" id="langBtn">
-                    🌐 English
-                </button>
-                <div class="dropdown-menu" id="langMenu">
-                    <a href="#" class="dropdown-item active">English</a>
-                    <a href="#" class="dropdown-item">isiZulu</a>
-                    <a href="#" class="dropdown-item">Afrikaans</a>
-                    <a href="#" class="dropdown-item">Sesotho</a>
+            <div class="nav-actions">
+                <div class="language-dropdown">
+                    <button class="language-selector" id="langBtn">
+                        🌐 English
+                    </button>
+                    <div class="dropdown-menu" id="langMenu">
+                        <a href="#" class="dropdown-item active">English</a>
+                        <a href="#" class="dropdown-item">isiZulu</a>
+                        <a href="#" class="dropdown-item">Afrikaans</a>
+                        <a href="#" class="dropdown-item">Sesotho</a>
+                    </div>
                 </div>
+
+                <button class="mobile-nav-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
             </div>
         </div>
-    </</nav>
+
+        <div class="mobile-drawer" id="mobileDrawer">
+            <ul class="mobile-menu-links">
+                <li><a href="#" class="mobile-link">Home</a></li>
+                <li><a href="#features" class="mobile-link">Features</a></li>
+                <li><a href="#about" class="mobile-link">About Us</a></li>
+                <li><a href="#portal" class="mobile-link">Portals</a></li>
+                <li><a href="#safety" class="mobile-link">Safety</a></li>
+                <li><a href="#help" class="mobile-link">Help</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <header class="hero" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1400&q=80');">
         <div class="hero-overlay"></div>
@@ -100,7 +119,6 @@
             </div>
         </div>
     </header>
-
     <section id="features" class="features">
         <div class="container">
             <div class="section-header">
